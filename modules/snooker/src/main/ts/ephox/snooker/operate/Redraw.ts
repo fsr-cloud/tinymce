@@ -48,10 +48,10 @@ const render = <T extends DetailNew> (table: SugarElement, grid: RowDataNew<T>[]
 
   const syncColGroup = (gridSection: RowDataNew<T>[]) =>
     // Assumption we should only ever have 1 colgroup in the section
-    Arr.bind(gridSection, (row) =>
-      Arr.map(row.cells, (cell) => {
-        setIfNot(cell.element, 'span', cell.colspan, 1);
-        return cell.element;
+    Arr.bind(gridSection, (colGroup) =>
+      Arr.map(colGroup.cells, (col) => {
+        setIfNot(col.element, 'span', col.colspan, 1);
+        return col.element;
       })
     );
 
