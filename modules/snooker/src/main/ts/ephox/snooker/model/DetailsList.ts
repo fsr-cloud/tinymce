@@ -38,10 +38,10 @@ const fromTable = (table: SugarElement) => {
     const cells = Arr.map(TableLookup.columns(group), (column) => {
       const rowspan = getAttrValue(column, 'rowspan', 1);
       const colspan = getAttrValue(column, 'colspan', 1);
-      return Structs.detail(column, rowspan, colspan);
+      return Structs.detail(column as any, rowspan, colspan);
     });
 
-    return Structs.rowdata(group, cells, parentSection);
+    return Structs.rowdata(group as any, cells, parentSection);
   });
 
   return tableRows.concat(tableColumnGroups);
