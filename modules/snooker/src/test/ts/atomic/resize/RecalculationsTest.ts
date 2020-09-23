@@ -92,11 +92,11 @@ UnitTest.test('RecalculationsTest', () => {
       )
     ],
     [
-      makeRow('r1', [
-        makeDetail('a', 1, 1)
-      ]),
       makeColumnGroup('c1', [
         makeDetail('c', 1, 1)
+      ]),
+      makeRow('r1', [
+        makeDetail('a', 1, 1)
       ])
     ],
     dimensions([ 10 ], [ 10 ])
@@ -128,12 +128,9 @@ UnitTest.test('RecalculationsTest', () => {
       )
     ],
     [
+      makeColumnGroup('c1', [ makeDetail('c00', 1, 1), makeDetail('c01', 1, 1) ]),
       makeRow('r0', [ makeDetail('a00', 1, 1), makeDetail('a01', 1, 1) ]),
-      makeRow('r1', [ makeDetail('a10', 1, 1), makeDetail('a11', 1, 1) ]),
-      makeColumnGroup('c1', [
-        makeDetail('c00', 1, 1),
-        makeDetail('c01', 1, 1)
-      ])
+      makeRow('r1', [ makeDetail('a10', 1, 1), makeDetail('a11', 1, 1) ])
     ],
     dimensions([ 20, 20 ], [ 15, 9 ])
   );
