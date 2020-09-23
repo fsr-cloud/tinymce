@@ -38,7 +38,6 @@ const copyCols = (table: SugarElement, target: TargetSelection): Optional<SugarE
 
     return [ fakeColgroup, ...fakeRows ];
   });
-
 };
 
 export {
