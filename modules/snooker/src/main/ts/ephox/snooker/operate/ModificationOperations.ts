@@ -6,19 +6,11 @@ import * as GridRow from '../model/GridRow';
 type CompElm = (e1: SugarElement, e2: SugarElement) => boolean;
 type Subst = (element: SugarElement, comparator: CompElm) => SugarElement;
 
-const extractGridRows = (grid: Structs.RowCells[]) => {
-  const result = Arr.partition(grid, (row) => row.section === 'colgroup');
-  return {
-    rows: result.fail,
-    cols: result.pass
-  };
-};
-
 // substitution :: (item, comparator) -> item
 // example is the location of the cursor (the row index)
 // index is the insert position (at - or after - example) (the row index)
 const insertRowAt = function (grid: Structs.RowCells[], index: number, example: number, comparator: CompElm, substitution: Subst) {
-  const { rows, cols } = extractGridRows(grid);
+  const { rows, cols } = GridRow.extractGridDetails(grid);
   const before = rows.slice(0, index);
   const after = rows.slice(index);
 
@@ -70,7 +62,7 @@ const splitCellIntoColumns = function (grid: Structs.RowCells[], exampleRow: num
 //   new cell below, and is empty), and
 // - the other cells in that row set to span the split cell.
 const splitCellIntoRows = function (grid: Structs.RowCells[], exampleRow: number, exampleCol: number, comparator: CompElm, substitution: Subst) {
-  const { rows, cols } = extractGridRows(grid);
+  const { rows, cols } = GridRow.extractGridDetails(grid);
   const index = exampleRow + 1; // insert after
   const before = rows.slice(0, index);
   const after = rows.slice(index);
@@ -95,7 +87,7 @@ const deleteColumnsAt = function (grid: Structs.RowCells[], start: number, finis
 };
 
 const deleteRowsAt = function (grid: Structs.RowCells[], start: number, finish: number) {
-  const { rows, cols } = extractGridRows(grid);
+  const { rows, cols } = GridRow.extractGridDetails(grid);
   return cols.concat(rows.slice(0, start)).concat(rows.slice(finish + 1));
 };
 
