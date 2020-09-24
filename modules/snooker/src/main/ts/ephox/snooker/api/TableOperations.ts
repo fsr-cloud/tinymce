@@ -1,7 +1,7 @@
 import { Arr, Fun, Optional } from '@ephox/katamari';
-import { GridRow } from '@ephox/snooker';
 import { Remove, SugarElement, SugarNode } from '@ephox/sugar';
 import * as DetailsList from '../model/DetailsList';
+import * as GridRow from '../model/GridRow';
 import {
   ExtractMergable, ExtractPaste, ExtractPasteRows, onCell, onCells, onMergable, onPaste, onPasteByEditor, onUnmergable, run, TargetSelection
 } from '../model/RunOperation';
